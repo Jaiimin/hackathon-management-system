@@ -1,15 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path'); // Import the path module
-
-// --- THIS IS THE FOOLPROOF METHOD ---
-// It creates a direct, absolute path to your Project.js model file.
+const path = require('path'); 
 const Project = require(path.resolve(__dirname, '../models/Project.js'));
 const { protect } = require('../middleware/authMiddleware');
-
-// @desc    Get projects sorted by score for the leaderboard
-// @route   GET /api/leaderboard
-// @access  Private
 router.get('/', protect, async (req, res) => {
     try {
         const projects = await Project.find({}).populate('team', 'name');

@@ -38,14 +38,12 @@ const addTeam = async (req, res) => {
   }
 };
 
-// --- NEW FUNCTION: Update a team ---
 const updateTeam = async (req, res) => {
   try {
     const team = await Team.findById(req.params.id);
     if (!team) {
       return res.status(404).json({ message: 'Team not found' });
     }
-    // Ensure the logged-in user is the one who created the team
     if (team.user.toString() !== req.user.id) {
       return res.status(401).json({ message: 'User not authorized' });
     }
@@ -57,7 +55,7 @@ const updateTeam = async (req, res) => {
   }
 };
 
-// --- NEW FUNCTION: Delete a team ---
+
 const deleteTeam = async (req, res) => {
   try {
     const team = await Team.findById(req.params.id);
@@ -68,7 +66,7 @@ const deleteTeam = async (req, res) => {
       return res.status(401).json({ message: 'User not authorized' });
     }
     await team.deleteOne();
-    res.json({ id: req.params.id }); // Send back the ID of the deleted team
+    res.json({ id: req.params.id }); 
   } catch (error) {
     console.error('**ERROR DELETING TEAM**:', error);
     res.status(500).json({ message: 'Server Error' });
@@ -79,6 +77,6 @@ const deleteTeam = async (req, res) => {
 module.exports = {
   getTeams,
   addTeam,
-  updateTeam, // Export the new functions
+  updateTeam, 
   deleteTeam,
 };

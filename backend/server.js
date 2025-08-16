@@ -12,7 +12,6 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/teams', require('./routes/teamRoutes'));
 app.use('/api/projects', require('./routes/projectRoutes'));
-// Ensure this line is present and correct
 app.use('/api/leaderboard', require('./routes/leaderboardRoutes'));
 
 const PORT = process.env.PORT || 5000;

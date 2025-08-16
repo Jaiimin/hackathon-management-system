@@ -2,7 +2,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
-  // The error was here. I've corrected the destructuring.
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 

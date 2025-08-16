@@ -41,8 +41,8 @@ const Leaderboard = () => {
                                     <span className="text-2xl font-bold text-gray-500 mr-4">{index + 1}</span>
                                     <div>
                                         <h2 className="text-xl font-bold">{project.name}</h2>
-                                        {/* --- THIS IS THE FIX --- */}
-                                        {/* Use ?. to prevent crash if team is missing */}
+                                        {}
+                                        {}
                                         <p className="text-md text-gray-700">by Team: <strong>{project.team?.name || 'Unknown'}</strong></p>
                                     </div>
                                 </div>

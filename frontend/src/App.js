@@ -4,7 +4,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
-import Leaderboard from './pages/Leaderboard'; // Ensure Leaderboard is imported
+import Leaderboard from './pages/Leaderboard'; 
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
@@ -12,11 +12,11 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        {/* Public Routes */}
+        {}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Private Routes */}
+        {}
         <Route path="/" element={<PrivateRoute component={Dashboard} />} />
         <Route path="/dashboard" element={<PrivateRoute component={Dashboard} />} />
         <Route path="/leaderboard" element={<PrivateRoute component={Leaderboard} />} />

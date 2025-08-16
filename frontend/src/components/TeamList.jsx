@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
-import EditTeamModal from './EditTeam'; // Import the new modal
+import EditTeamModal from './EditTeam'; 
 
 const TeamList = ({ teams, setTeams, refresh }) => {
   const { user } = useAuth();
-  const [editingTeam, setEditingTeam] = useState(null); // State to track which team is being edited
+  const [editingTeam, setEditingTeam] = useState(null); 
 
   useEffect(() => {
     const fetchTeams = async () => {
@@ -22,14 +22,12 @@ const TeamList = ({ teams, setTeams, refresh }) => {
     fetchTeams();
   }, [user, refresh, setTeams]);
 
-  // --- NEW FUNCTION: Handle deleting a team ---
   const handleDelete = async (teamId) => {
     if (window.confirm('Are you sure you want to delete this team?')) {
       try {
         await axiosInstance.delete(`/api/teams/${teamId}`, {
           headers: { Authorization: `Bearer ${user.token}` },
         });
-        // Remove the deleted team from the state
         setTeams(teams.filter((team) => team._id !== teamId));
       } catch (error) {
         alert('Failed to delete team.');
@@ -37,15 +35,13 @@ const TeamList = ({ teams, setTeams, refresh }) => {
     }
   };
 
-  // --- NEW FUNCTION: Handle saving an updated team ---
   const handleSave = async (teamId, updatedData) => {
       try {
           const response = await axiosInstance.put(`/api/teams/${teamId}`, updatedData, {
               headers: { Authorization: `Bearer ${user.token}` },
           });
-          // Update the team in the state
           setTeams(teams.map(team => team._id === teamId ? response.data : team));
-          setEditingTeam(null); // Close the modal
+          setEditingTeam(null);
       } catch (error) {
           alert('Failed to update team. Name might already be taken.');
       }
@@ -80,7 +76,7 @@ const TeamList = ({ teams, setTeams, refresh }) => {
       ) : (
         <p>You have not created any teams yet.</p>
       )}
-      {/* Render the modal if a team is being edited */}
+      {}
       {editingTeam && (
         <EditTeamModal
           team={editingTeam}

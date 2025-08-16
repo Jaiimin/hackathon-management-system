@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Ensure this schema is defined correctly
 const teamSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -20,5 +19,4 @@ const teamSchema = new mongoose.Schema({
   timestamps: true,
 });
 
-// This line is crucial. It creates and exports the model.
 module.exports = mongoose.model('Team', teamSchema);
