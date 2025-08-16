@@ -19,7 +19,6 @@ const Navbar = () => {
         {user ? (
           <>
             <Link to="/dashboard" className="mr-4 hover:underline">Dashboard</Link>
-            // leaderboardpage
             <Link to="/leaderboard" className="mr-4 hover:underline">Leaderboard</Link>
             <Link to="/profile" className="mr-4 hover:underline">Profile</Link>
             <button

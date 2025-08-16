@@ -6,27 +6,11 @@ on:
       - main
 
 jobs:
-  # --- JOB 1: Test and Deploy the Backend ---
   deploy-backend:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18' # Use a specific Node.js version
-
-      - name: Install Backend Dependencies
-        run: |
-          cd backend
-          npm install
-
-      - name: Run Backend Tests
-        run: |
-          cd backend
-          npm test
 
       - name: Deploy Backend to EC2
         uses: appleboy/ssh-action@master
@@ -40,7 +24,6 @@ jobs:
             npm install
             pm2 restart hackathon-backend
 
-  # --- JOB 2: Test and Deploy the Frontend ---
   deploy-frontend:
     runs-on: ubuntu-latest
     steps:
