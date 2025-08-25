@@ -1,6 +1,6 @@
 const Project = require('../models/Project');
 const Team = require('../models/Team');
-
+//comment
 const getProjects = async (req, res) => {
   try {
     const projects = await Project.find({}).populate('team', 'name').populate('scores.judge', 'name');
